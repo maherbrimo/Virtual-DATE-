@@ -285,53 +285,52 @@ if(messageIndex >= messages.length){
 }
 }
 
-yesBtn.addEventListener("click",()=>{
+yesBtn.addEventListener("click", () => {
 
-document.getElementById("question").style.display="none";
-document.getElementById("celebration").style.display="block";
+    document.getElementById("question").style.display = "none";
+    document.getElementById("celebration").style.display = "block";
 
-createHearts();
+    createHearts();
 
-const hamster=document.getElementById("babyboo");
-const song=document.getElementById("babybooSong");
+    const hamster = document.getElementById("babyboo");
+    const song = document.getElementById("babybooSong");
 
-hamster.style.display="block";
+    hamster.style.display = "block";
 
-hamster.animate(
-[
-{right:"-250px"},
-{right:"30px"}
-],
-{
-duration:1200,
-fill:"forwards"
-}
-);
+    hamster.animate(
+        [
+            { right: "-250px" },
+            { right: "30px" }
+        ],
+        {
+            duration: 1200,
+            fill: "forwards"
+        }
+    );
 
-setTimeout(()=>{
+    song.play();
 
-song.play();
+    hamster.style.animation = "dance .6s infinite";
 
-hamster.style.animation="dance .6s infinite";
+    song.onended = () => {
 
-},1200);
+        hamster.style.animation = "none";
 
-song.onended = function(){
+        hamster.animate(
+            [
+                { opacity: 1 },
+                { opacity: 0 }
+            ],
+            {
+                duration: 1200,
+                fill: "forwards"
+            }
+        );
 
-document.getElementById("yayTitle").style.display="block";
-
-document.getElementById("yayText").style.display="block";
-
-document.getElementById("spinBtn").style.display="inline-block";
-
-hamster.animate(
-[
-{opacity:1},
-{opacity:0}
-],
-{
-duration:1200,
-fill:"forwards"
+        document.getElementById("yayTitle").style.display = "block";
+        document.getElementById("yayText").style.display = "block";
+        document.getElementById("spinBtn").style.display = "inline-block";
+    };
 
 });
 
