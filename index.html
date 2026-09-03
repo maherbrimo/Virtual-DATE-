@@ -4,7 +4,30 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title> Vitrual date ❤️</title>
+#babyboo{
+    position:fixed;
+    width:170px;
+    right:-250px;
+    bottom:20px;
+    display:none;
+    z-index:9999;
+}
 
+@keyframes dance{
+
+0%{
+transform:translateY(0px);
+}
+
+50%{
+transform:translateY(-15px);
+}
+
+100%{
+transform:translateY(0px);
+}
+
+}
 <style>
 *{
     margin:0;
@@ -112,7 +135,14 @@ to{
 
 <body>
 
+<audio id="babybooSong">
+    <source src="babyboo.mp3" type="audio/mpeg">
+</audio>
+
+<img id="babyboo" src="babyboo.gif" alt="BabyBoo">
+
 <div id="question" class="container">
+
 
 <img src="https://media.giphy.com/media/MDJ9IbxxvDUQM/giphy.gif">
 
@@ -236,6 +266,27 @@ document.getElementById("question").style.display="none";
 document.getElementById("celebration").style.display="block";
 
 createHearts();
+
+const song=document.getElementById("babybooSong");
+song.play();
+
+const hamster=document.getElementById("babyboo");
+
+hamster.style.display="block";
+
+hamster.animate([
+{right:"-250px"},
+{right:"30px"}
+],{
+duration:1000,
+fill:"forwards"
+});
+
+setTimeout(()=>{
+
+hamster.style.animation="dance .5s infinite";
+
+},1000);
 
 });
 
