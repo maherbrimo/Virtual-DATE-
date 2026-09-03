@@ -4,30 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title> Vitrual date ❤️</title>
-#babyboo{
-    position:fixed;
-    width:170px;
-    right:-250px;
-    bottom:20px;
-    display:none;
-    z-index:9999;
-}
 
-@keyframes dance{
-
-0%{
-transform:translateY(0px);
-}
-
-50%{
-transform:translateY(-15px);
-}
-
-100%{
-transform:translateY(0px);
-}
-
-}
 <style>
 *{
     margin:0;
@@ -130,6 +107,47 @@ to{
     opacity:0;
 }
 }
+    
+#babyboo{
+    position:fixed;
+    width:170px;
+    right:-250px;
+    bottom:20px;
+    display:none;
+    z-index:9999;
+}
+
+@keyframes dance{
+    0%{
+        transform:translateY(0px) rotate(0deg);
+    }
+
+    25%{
+        transform:translateY(-15px) rotate(-6deg);
+    }
+
+    50%{
+        transform:translateY(0px) rotate(6deg);
+    }
+
+    75%{
+        transform:translateY(-15px) rotate(-6deg);
+    }
+
+    100%{
+        transform:translateY(0px) rotate(0deg);
+    }
+    #spinBtn{
+    display:none;
+    opacity:0;
+    transition:opacity .8s;
+}
+
+.showButton{
+    display:inline-block !important;
+    opacity:1 !important;
+}
+}
 </style>
 </head>
 
@@ -158,19 +176,22 @@ to{
 
 <div id="celebration" class="container">
 
-<h1>AYYY you said YES!! ❤️🥹</h1>
+<h1 id="yayTitle" style="display:none;">
+AYYY you said YES!! ❤️🥹
+</h1>
 
-<p style="font-size:22px;margin:20px;">
+<p id="yayText"
+style="font-size:22px;margin:20px;display:none;">
 Now let's decide our first date...
 </p>
 
-<button id="spinBtn">
+<button id="spinBtn" style="display:none;">
 🎡 Click Here
 </button>
 
-<h2 id="result" style="margin-top:30px;"></h2>
+<h2 id="result" style="display:none;"></h2>
 
-<p id="description" style="max-width:600px;margin:auto;"></p>
+<p id="description" style="display:none;"></p>
 
 </div>
 
@@ -267,26 +288,47 @@ document.getElementById("celebration").style.display="block";
 
 createHearts();
 
-const song=document.getElementById("babybooSong");
-song.play();
-
 const hamster=document.getElementById("babyboo");
+const song=document.getElementById("babybooSong");
 
 hamster.style.display="block";
 
-hamster.animate([
+hamster.animate(
+[
 {right:"-250px"},
 {right:"30px"}
-],{
-duration:1000,
+],
+{
+duration:1200,
 fill:"forwards"
-});
+}
+);
 
 setTimeout(()=>{
 
-hamster.style.animation="dance .5s infinite";
+song.play();
 
-},1000);
+hamster.style.animation="dance .6s infinite";
+
+},1200);
+
+setTimeout(()=>{
+
+document.getElementById("yayTitle").style.display="block";
+
+document.getElementById("yayText").style.display="block";
+
+hamster.animate(
+[
+{opacity:1},
+{opacity:0}
+],
+{
+duration:1200,
+fill:"forwards"
+});
+
+},6200);
 
 });
 
@@ -316,9 +358,14 @@ document.getElementById("spinBtn").onclick=function(){
 
 const random=Math.floor(Math.random()*dates.length);
 
-document.getElementById("result").innerHTML=dates[random].title;
+const result=document.getElementById("result");
+const description=document.getElementById("description");
 
-document.getElementById("description").innerHTML=dates[random].description;
+result.style.display="block";
+description.style.display="block";
+
+result.innerHTML=dates[random].title;
+description.innerHTML=dates[random].description;
 
 }
 </script>
