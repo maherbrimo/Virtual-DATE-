@@ -118,29 +118,38 @@ to{
 }
 
 @keyframes dance{
-    0%{
-        transform:translateY(0px) rotate(0deg);
-    }
 
-    25%{
-        transform:translateY(-15px) rotate(-6deg);
-    }
+0%{
+    transform:translateY(0px) rotate(0deg);
+}
 
-    50%{
-        transform:translateY(0px) rotate(6deg);
-    }
+25%{
+    transform:translateY(-15px) rotate(-6deg);
+}
 
-    75%{
-        transform:translateY(-15px) rotate(-6deg);
-    }
+50%{
+    transform:translateY(0px) rotate(6deg);
+}
 
-    100%{
-        transform:translateY(0px) rotate(0deg);
-    }
-    #spinBtn{
+75%{
+    transform:translateY(-15px) rotate(-6deg);
+}
+
+100%{
+    transform:translateY(0px) rotate(0deg);
+}
+
+} 
+
+#spinBtn{
     display:none;
     opacity:0;
     transition:opacity .8s;
+}
+
+.showButton{
+    display:inline-block;
+    opacity:1;
 }
 
 .showButton{
@@ -312,11 +321,13 @@ hamster.style.animation="dance .6s infinite";
 
 },1200);
 
-setTimeout(()=>{
+song.onended = function(){
 
 document.getElementById("yayTitle").style.display="block";
 
 document.getElementById("yayText").style.display="block";
+
+document.getElementById("spinBtn").style.display="inline-block";
 
 hamster.animate(
 [
@@ -327,6 +338,8 @@ hamster.animate(
 duration:1200,
 fill:"forwards"
 });
+
+};
 
 },6200);
 
@@ -365,7 +378,10 @@ result.style.display="block";
 description.style.display="block";
 
 result.innerHTML=dates[random].title;
-description.innerHTML=dates[random].description;
+
+description.innerHTML=
+dates[random].description +
+"<br><br><strong>📸 Send me a screenshot/photo of what you got 📸 </strong>";
 
 }
 </script>
