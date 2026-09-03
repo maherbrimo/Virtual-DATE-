@@ -127,19 +127,68 @@ to{
 
 <div id="celebration" class="container">
 
-<h1>YAY!! ❤️🥹</h1>
+<h1>She Said YES!! ❤️🥹</h1>
 
-<img src="https://media.giphy.com/media/26ufdipQqU2lhNA4g/giphy.gif">
+<p style="font-size:22px;margin:20px;">
+Now let's let fate decide our first date...
+</p>
 
-<h2 style="color:#ff4d88;margin-top:20px;">
-You just made me the happiest person! 💕
-</h2>
+<button id="spinBtn">
+🎡 Spin the Wheel
+</button>
+
+<h2 id="result" style="margin-top:30px;"></h2>
+
+<p id="description" style="max-width:600px;margin:auto;"></p>
 
 </div>
 
 <script>
 
 const noBtn=document.getElementById("no");
+const dates = [
+
+{
+title:"🧠 Personality Match",
+description:"We'll both take the same personality test, then hop on FaceTime and compare our results. Whether it's Big Five or MBTI, the fun part is seeing what matches, what doesn't, and debating how accurate it actually is."
+},
+
+{
+title:"❤️ 36 Questions",
+description:"We'll take turns answering thoughtful questions that get a little deeper as we go. The goal isn't to interview each other—it's to learn new things and have some great conversations."
+},
+
+{
+title:"🌎 GeoGuessr Challenge",
+description:"Let's put our geography skills to the test! We'll play a geography game or a GeoGuessr alternative and see who can figure out where we are first."
+},
+
+{
+title:"🏙️ My Perfect Day",
+description:"We'll each plan the perfect day if the other person came to visit our city. Restaurants, coffee shops, hikes, hidden gems—anything that makes home feel special."
+},
+
+{
+title:"🏆 Tier List Night",
+description:"We'll make a tier list together and argue over random things like fast food, music, vacation spots, movies, relationship habits, or literally anything else. Friendly debates are encouraged 😂."
+},
+
+{
+title:"🍿 Movie Night",
+description:"Let's find a funny or terrible movie, hit play at the same time, and laugh our way through it together while FaceTiming."
+},
+
+{
+title:"🎮 Game Night",
+description:"Time for some friendly competition! We can play Skribbl.io, chess, Uno, Codenames, Minecraft, Roblox, or whatever sounds the most fun."
+},
+
+{
+title:"📸 Camera Roll Challenge",
+description:"We'll give each other prompts like 'favorite memory,' 'worst haircut,' 'favorite place I've been,' or 'something nobody knows about me,' then race to find the best photo."
+}
+
+];
 const yesBtn=document.getElementById("yes");
 
 let size=1;
@@ -193,7 +242,15 @@ heart.remove();
 },200);
 
 }
+document.getElementById("spinBtn").onclick=function(){
 
+const random=Math.floor(Math.random()*dates.length);
+
+document.getElementById("result").innerHTML=dates[random].title;
+
+document.getElementById("description").innerHTML=dates[random].description;
+
+}
 </script>
 
 </body>
