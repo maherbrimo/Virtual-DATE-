@@ -14,7 +14,7 @@
 }
 
 body{
-    background:linear-gradient(135deg,#ffd6e7,#ffe9f3);
+    background:linear-gradient(135deg,#007BFF,#00C853,#FF1744);
     height:100vh;
     display:flex;
     justify-content:center;
@@ -34,7 +34,7 @@ img{
 }
 
 h1{
-    color:#ff3f7f;
+    color:white;
     margin-bottom:30px;
     font-size:2.2rem;
 }
@@ -56,7 +56,7 @@ button{
 }
 
 #yes{
-    background:#ff4d88;
+    background:#00c853;
     color:white;
     position:absolute;
     left:40px;
@@ -64,8 +64,8 @@ button{
 }
 
 #no{
-    background:white;
-    color:#ff4d88;
+    background:#1e88e5;
+    color:white;
     position:absolute;
     right:40px;
     top:60px;
@@ -196,19 +196,40 @@ let size=1;
 noBtn.addEventListener("mouseover",moveButton);
 noBtn.addEventListener("click",moveButton);
 
+const messages = [
+"Are you sure? 🥺",
+"Please? ❤️",
+"I'll buy you matcha 🍵",
+"Think again 😭",
+"You clicked the wrong button 😂",
+"One more chance!",
+"I promise it'll be fun 💕",
+"You can't escape 😅"
+];
+
+let messageIndex = 0;
+
 function moveButton(){
 
-const maxX=250;
-const maxY=120;
+const maxX = 250;
+const maxY = 120;
 
-const x=Math.random()*maxX;
-const y=Math.random()*maxY;
+const x = Math.random()*maxX;
+const y = Math.random()*maxY;
 
-noBtn.style.left=x+"px";
-noBtn.style.top=y+"px";
+noBtn.style.left = x+"px";
+noBtn.style.top = y+"px";
 
-size+=0.12;
-yesBtn.style.transform=`scale(${size})`;
+size += 0.12;
+yesBtn.style.transform = `scale(${size})`;
+
+noBtn.innerHTML = messages[messageIndex];
+
+messageIndex++;
+
+if(messageIndex >= messages.length){
+    messageIndex = messages.length - 1;
+}
 }
 
 yesBtn.addEventListener("click",()=>{
